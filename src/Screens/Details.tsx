@@ -3,7 +3,7 @@ import { HStack, VStack , useTheme , Text, ScrollView , Box } from 'native-base'
 import { Header } from '../components/Header';
 import { useRoute } from '@react-navigation/native';
 import { OrderProps } from '../components/Order';
-import firestore from '@react-native-firebase/firestore'
+import Firestore from '@react-native-firebase/firestore'
 import { OrderFirestoreDTO } from '../DTOs/OrderDTO';
 import { DateFormat } from '../utils/FirestoreDateFormat';
 import { Loading } from '../components/Loading';
@@ -40,13 +40,13 @@ export const Details = () => {
     if(!solution){
       Alert.alert('Solução' , 'Digite uma solução')
     }
-    firestore()
+    Firestore()
     .collection<OrderFirestoreDTO>('orders')
     .doc(orderId)
     .update({
       status:'closed',
       solution,
-      closed_at: firestore.FieldValue.serverTimestamp()
+      closed_at: Firestore.FieldValue.serverTimestamp()
     })
     .then(() => {
       Alert.alert('Solicitação' , 'Solicitação encerrada com sucesso');
@@ -60,7 +60,7 @@ export const Details = () => {
   }
 
   useEffect( () => {
-    firestore()
+    Firestore()
     .collection<OrderFirestoreDTO>('orders')
     .doc(orderId)
     .get()
@@ -116,7 +116,7 @@ export const Details = () => {
             title='descrição do problema'
             description={order.description}
             icon={ClipboardText}
-            footer={`Resgistrado em` + order.when}
+            footer={`Resgistrado em ` + order.when}
           />
 
           <CardDetails

@@ -79,11 +79,11 @@ export const Home = () =>{
 
         <VStack flex={1} px={6} >
         
-            <HStack w='full' mt={8} mb={4} justifyContent='space=between' alignItems='center' > 
+            <HStack w='full' mt={8} mb={4} justifyContent='space-between' alignItems='center' > 
                 <Heading color='gray.100'>
                     Meus Chamados
                 </Heading>
-                <Text color='gray.200'>3</Text>
+                <Text color='gray.200'>{orders.length}</Text>
             </HStack>
            
            <HStack space={3} mb={8}>

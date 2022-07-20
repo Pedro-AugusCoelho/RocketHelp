@@ -24,7 +24,7 @@ export const Filter = ({isActive = false , title , type , ...rest}:FilterProps) 
             {...rest}
         >
             <Text color={isActive ? colorType : 'gray.300'} fontSize='xs' textTransform='uppercase'>
-
+                {title}
             </Text>
         </Button>
     )
